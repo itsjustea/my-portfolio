@@ -24,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tony Evans Adisurya — Ledger",
+  title: "Tony Evans Adisurya",
   description:
     "Portfolio of Tony Evans Adisurya — Product & Business Analyst working across fintech, digital assets, and Web3.",
 };
