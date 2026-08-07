@@ -1,10 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
-import { stats, experience, projects, skillGroups, education } from "./data";
+import { useEffect, useState } from "react";
+import { experience, projects, skillGroups, education } from "./data";
 import Image from "next/image";
 
 export default function Home() {
+
+  const [openBlock, setOpenBlock] = useState<string | null>(null);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -113,23 +116,57 @@ export default function Home() {
           </div>
 
           <div className="ledger">
-            {experience.map((block) => (
+            {experience.map((block) => {
+              const isOpen = openBlock === block.height;
+              return (
+  
               <div className="block reveal" key={block.height}>
                 <div className="block-node" />
-                <div className="block-card">
+
+                  <div
+                    className={`block-card${isOpen ? " open" : ""}`}
+                    onClick={() => setOpenBlock(isOpen ? null : block.height)}
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={isOpen}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setOpenBlock(isOpen ? null : block.height);
+                      }
+                    }}
+                  >
                   <div className="block-meta">
-                    {/* <span className="height">{block.height}</span> */}
                     <span>{block.dateRange}</span>
                   </div>
                   <div className="block-title-row">
                     <span className="block-title">{block.title}</span>
+                    <span className={`block-chevron${isOpen ? " open" : ""}`}>⌄</span>
                   </div>
                   <div className="block-company">
-                    <b>{block.company}</b> · {block.location}
-                  </div>
+                      <a
+                        href={block.companyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="company-link"
+                      >
+                        <b>{block.company}</b>
+                      </a>{" "}
+                      · {block.location}
+                    </div>
+                    <div className={`block-details${isOpen ? " open" : ""}`}>
+                      <ul className="block-list">
+                        {block.bullets.map((bullet) => (
+                          <li key={bullet}>{bullet}</li>
+                        ))}
+                      </ul>
+                    </div>
                 </div>
               </div>
-            ))}
+              );
+              }
+            )}
           </div>
         </section>
 
@@ -205,7 +242,11 @@ export default function Home() {
           <div className="validators">
             {education.map((edu) => (
               <div className="validator-card reveal" key={edu.school}>
-                <div className="validator-school">{edu.school}</div>
+                <div className="validator-school">
+                  <a href={edu.schoolUrl} target="_blank" rel="noopener noreferrer">
+                    {edu.school}
+                  </a>
+                </div>
                 <div className="validator-loc">{edu.location}</div>
                 <div className="validator-deg">{edu.degree}</div>
                 <div className="validator-time mono">{edu.timeRange}</div>

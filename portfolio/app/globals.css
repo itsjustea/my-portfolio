@@ -507,6 +507,33 @@ h2.section-title {
   font-weight: 700;
 }
 
+.block-details {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.3s ease, opacity 0.25s ease, margin-top 0.3s ease;
+}
+.block-details.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: 16px;
+}
+.block-details > .block-list {
+  overflow: hidden;
+}
+
+.block-chevron {
+  font-size: 20px;
+  line-height: 1;
+  color: var(--text-faint);
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+.block-chevron.open {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
 /* ---------- PROJECTS / CONTRACTS ---------- */
 .contracts-grid {
   display: grid;

@@ -1,22 +1,9 @@
-export interface Stat {
-  label: string;
-  value: string;
-}
-
-export const stats: Stat[] = [
-  { label: "Internships completed", value: "5" },
-  { label: "Requirements gathered", value: "30" },
-  { label: "Smart contracts deployed", value: "6" },
-  { label: "RPA / automation workflows", value: "3" },
-  { label: "Bugs debugged (UAT)", value: "80" },
-  { label: "Countries studied in", value: "2" },
-];
-
 export interface ExperienceBlock {
   height: string;
   dateRange: string;
   title: string;
   company: string;
+  companyUrl: string;
   location: string;
   bullets: string[];
 }
@@ -27,6 +14,7 @@ export const experience: ExperienceBlock[] = [
     dateRange: "JAN 2026 – MAY 2026",
     title: "Product & Business Analyst Intern",
     company: "SBI Digital Markets",
+    companyUrl: "https://sbidm.com/",
     location: "Singapore",
     bullets: [
       "Gathered and documented 30 functional requirements working across product, engineering, and operations teams.",
@@ -40,6 +28,7 @@ export const experience: ExperienceBlock[] = [
     dateRange: "MAY 2024 – DEC 2024",
     title: "Information Security Analyst Intern",
     company: "Singapore Exchange",
+    companyUrl: "https://www.sgx.com/",
     location: "Singapore",
     bullets: [
       "Supported data loss prevention rollout across 6 departments using Trellix and Skyhigh Security.",
@@ -52,6 +41,7 @@ export const experience: ExperienceBlock[] = [
     dateRange: "DEC 2023",
     title: "Software Engineer Intern",
     company: "Titipku",
+    companyUrl: "https://titipku.com/",
     location: "Indonesia",
     bullets: [
       "Developed 5 end-to-end product features for a full-stack web app using React, Golang (Gin), and MySQL.",
@@ -64,6 +54,7 @@ export const experience: ExperienceBlock[] = [
     dateRange: "MAY 2023 – JUL 2023",
     title: "Operation Analyst Intern",
     company: "Sygnum Bank",
+    companyUrl: "https://www.sygnum.com/",
     location: "Singapore",
     bullets: [
       "Ran UAT & regression testing across 100 stories, debugging ~80 bugs to improve release quality.",
@@ -76,6 +67,7 @@ export const experience: ExperienceBlock[] = [
     dateRange: "JAN 2022 – JUN 2022",
     title: "Project Intern",
     company: "Accenture",
+    companyUrl: "https://www.accenture.com/",
     location: "Singapore",
     bullets: [
       "Reviewed deliverables for compliance with documentation and reporting standards.",
@@ -95,14 +87,14 @@ export interface Project {
 export const projects: Project[] = [
   {
     kind: "contract",
-    name: "Final Year Project - Decentralised Crowdfunding Platform",
+    name: "Final Year Project: Decentralised Crowdfunding Platform on Ethereum",
     description:
       "Final year project — a decentralised crowdfunding platform where users create campaigns and contribute through trustless smart contracts. 3 Solidity contracts deployed via Hardhat with full unit test coverage, plus a Next.js frontend with RainbowKit wallet integration.",
     tags: ["Solidity", "Hardhat", "Next.js", "RainbowKit"],
   },
   {
     kind: "contract",
-    name: "Dutch Auction Platform",
+    name: "Decentralised Dutch Auction Platform",
     description:
       "A Dutch auction application with automated price-reduction logic for token sale price discovery. Solidity contracts tested end-to-end for bidding, real-time pricing, and on-chain settlement.",
     tags: ["Solidity", "Hardhat", "Ethereum"],
@@ -153,6 +145,7 @@ export const skillGroups: SkillGroup[] = [
 export interface Education {
   status: "active" | "confirmed";
   school: string;
+  schoolUrl: string;
   location: string;
   degree: string;
   timeRange: string;
@@ -160,8 +153,9 @@ export interface Education {
 
 export const education: Education[] = [
   {
-    status: "confirmed",
+    status: "active",
     school: "Nanyang Technological University",
+    schoolUrl: "https://www.ntu.edu.sg/",
     location: "Singapore",
     degree: "Bachelor of Computing with Honours — Computer Science",
     timeRange: "AUG 2022 → MAY 2026",
@@ -169,8 +163,9 @@ export const education: Education[] = [
   {
     status: "confirmed",
     school: "Linköping University",
+    schoolUrl: "https://www.liu.se/",
     location: "Linköping, Sweden",
-    degree: "Bachelor of Science — Computer Science (Semester Exchange)",
+    degree: "Bachelor of Science — Computer Science (Exchange)",
     timeRange: "JAN 2025 → JUN 2025",
   },
 ];
